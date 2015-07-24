@@ -1,0 +1,79 @@
+# Java Email Server (JES) Logging Configuration
+#
+# This file contains setting to configure the JES Logging facilities.
+# JES makes use of the Jakarta Project's commons-logging project
+# to allow plugable log configuration.  Please refer to the user's guide
+# if you have questions specific to commons-logging:
+# http://jakarta.apache.org/commons/logging/userguide.html
+
+#####################################################################
+# Log4JLogger Settings
+#####################################################################
+# These settings will be loaded and used if a Log4JLogger start up
+# script is selected.
+# For more information on modifying these properties, please refer to
+# the documentation here:
+# http://jakarta.apache.org/log4j/docs/api/org/apache/log4j/PropertyConfigurator.html#doConfigure(java.lang.String,%20org.apache.log4j.spi.LoggerRepository)
+# or for more general log4j information:
+# http://jakarta.apache.org/log4j
+#
+# Changes made to these properties while the system is running will
+# be applied. There may be a delay of up to one minute.
+
+# Console (Standard Out) Appender
+# Default logger, writes log messages to the console output
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.threshold=warn
+
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{ISO8601} - [%t] %C{1} - %m%n
+
+# File Appender
+# Logs messages to a log file.
+log4j.appender.file=org.apache.log4j.RollingFileAppender
+log4j.appender.file.File=/usr/local/jes/logs/jes.log
+log4j.appender.file.MaxFileSize=512KB
+log4j.appender.file.MaxBackupIndex=20
+log4j.appender.file.threshold=debug
+
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d{ISO8601} - [%t] %C{1} - %m%n
+
+# File Appender 2
+# Logs error messages to a log file.
+log4j.appender.file2=org.apache.log4j.RollingFileAppender
+log4j.appender.file2.File=/usr/local/jes/logs/jes2.log
+log4j.appender.file2.MaxFileSize=1024KB
+log4j.appender.file2.MaxBackupIndex=20
+log4j.appender.file2.threshold=error
+
+log4j.appender.file2.layout=org.apache.log4j.PatternLayout
+log4j.appender.file2.layout.ConversionPattern=%d{ISO8601} - [%t] %C{1} - %m%n
+
+# File Appender auth
+# Logs authentication messages to a log file.
+log4j.logger.com.ericdaugherty.mail.server.services.smtp.server.command.impl.AuthCommand=info, auth
+log4j.additivity.com.ericdaugherty.mail.server.services.smtp.server.command.impl.AuthCommand=false
+
+log4j.appender.auth=org.apache.log4j.RollingFileAppender
+log4j.appender.auth.File=/usr/local/jes/logs/auth.log
+log4j.appender.auth.MaxFileSize=1024KB
+log4j.appender.auth.MaxBackupIndex=20
+log4j.appender.auth.threshold=info
+
+log4j.appender.auth.layout=org.apache.log4j.PatternLayout
+log4j.appender.auth.layout.ConversionPattern=%d{ISO8601} - [%t] %C{1} - %m%n
+
+# Chainsaw Appender
+# Streams log messages through a network socket
+#log4j.appender.CHAINSAW_CLIENT=org.apache.log4j.net.SocketAppender
+#log4j.appender.CHAINSAW_CLIENT.RemoteHost=localhost
+#log4j.appender.CHAINSAW_CLIENT.Port=4560
+#log4j.appender.CHAINSAW_CLIENT.LocationInfo=true
+
+# Root Appenders
+# These appenders will receive all log messages.  To limit
+# the severity of the messages they display, edit the threshold
+# of the specific appender
+#log4j.rootLogger=CHAINSAW_CLIENT, stdout, file, file2
+log4j.rootLogger=debug, stdout, file, file2

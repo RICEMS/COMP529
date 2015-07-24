@@ -1,0 +1,38 @@
+package com.example.jestest;
+
+import rice.elec529.dias.interfaces.LogInterface;
+import rice.elec529.dias.interfaces.ServicesInterface;
+
+public class JES implements ServicesInterface
+{
+	private LogInterface m_logger;
+	
+	public JES(LogInterface logger)
+	{
+		m_logger = logger;
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return "JES";
+	}
+
+	@Override
+	public String getConfigUrl()
+	{
+		return "http://localhost/....";
+	}
+
+	@Override
+	public void start() {
+		m_logger.log("JES.start()");
+		/* Test SVN*/
+	}
+
+	@Override
+	public void stop() {
+		m_logger.log("JES.stop()");
+	}
+
+}

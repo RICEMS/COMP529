@@ -1,0 +1,86 @@
+#!/bin/bash
+
+#this file belongs in /etc/ppp/ip-down.d/ (it is called by run-parts in /etc/ppp/ip-down)
+# test call: ./dias-down.sh pppN tty 1 192.168.29.104 192.168.29.105 something
+
+# These variables are for the use of the scripts run by run-parts
+PPP_IFACE="$1"
+PPP_TTY="$2"
+PPP_SPEED="$3"
+PPP_LOCAL="$4"
+PPP_REMOTE="$5"
+PPP_IPPARAM="$6"
+
+DOM="elec529.recg.rice.edu"
+USERS="clay ellis adriana yanda haihua" #keep the order we had
+KEYNAME=${DOM}.
+KEY=aUWLBG+OIgWthWIcftfknw==
+IPBASE="168.7.138."
+IPSTART="105"
+NSIP="104"
+
+#have to declare functions first:
+function updateDNS {
+#	echo funcargs $1 $2
+        echo "zone $DOM
+update delete $1 A
+update add $1 1 A $2
+send
+quit" | nsupdate -y ${KEYNAME}:${KEY}
+
+}
+
+#very hackish, but it works
+
+i=$IPSTART
+for u in $USERS
+do
+	HOST[$i]=$u
+	i=`expr $i + 1`
+done
+
+CURIP=`echo $PPP_REMOTE | awk -F. '{print $4}'`
+echo curip:$CURIP
+CURHOST=${HOST[$CURIP]}
+
+#updateDNS $CURHOST.$DOM. 127.0.${CURIP}.1
+#if no failover is found, it will be localhost.
+newfailover=127.0.${CURIP}.1
+
+#find new failover (simplistic -- just take first host found that's up)
+fexists=0
+for u in $USERS
+do
+	if  [[ $u != $CURHOST ]]
+	then
+		newip=`dig +short ${u}.${DOM}`
+	        if [[ "${newip}" != 127.* ]] && [[ "${newip}" != ${IPBASE}${CURIP} ]]
+	        then
+        		#echo "failover found: ${newip}"
+        	        newfailover=${newip}
+	                fexists=1
+        	        break
+	        fi
+	fi
+done
+
+
+#replace failovers as necessary
+i=$IPSTART
+for u in $USERS
+do
+	#if this node is the failover, then replace it with the next available node
+	if [[ "`dig +short ${u}.${DOM}`" == ${IPBASE}${CURIP} ]]
+	then
+		if [ $fexists -eq 1 ]
+		then
+		        updateDNS $u.$DOM. $newfailover
+		else
+			updateDNS $u.$DOM. 127.0.${i}.1
+		fi
+	fi
+	i=`expr $i + 1`
+done
+
+#set this hosts new failover (or none)
+updateDNS $CURHOST.$DOM. $newfailover

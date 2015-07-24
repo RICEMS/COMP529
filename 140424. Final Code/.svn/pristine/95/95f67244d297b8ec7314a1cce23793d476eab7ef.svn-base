@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<title>DIAS</title>
+
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+
+<link rel="stylesheet" href="Style.css" type="text/css" />
+
+</head>
+<body>
+
+	<!-- header starts-->
+	<div id="header-wrap">			
+				
+		<div id="header-photo">
+		<img alt="header photo" src="images/decent2.jpg" width="400" height="290" />
+		</div>
+		
+		<h1 id="logo-text"><a href="index.html" title="">DIAS</a></h1>		
+		<p id="intro">Decentralizing the Internet Application Services</p>		
+		
+		<div  id="nav">
+			<ul>
+				<li id="current"><a href="index.html">Home DIAS</a></li>
+				<li ><a href="http://adriana.elec529.recg.rice.edu:8080/">Adriana Flores</a></li>
+				<li><a href="http://clay.elec529.recg.rice.edu:8080/">Clayton Shepard</a></li>
+				<li><a href="http://ellis.elec529.recg.rice.edu:8080/">Ellis Giles</a></li>
+				<li><a href="http://haihua.elec529.recg.rice.edu:8080/">Haihua Shen</a></li>
+				<li><a href="http://yanda.elec529.recg.rice.edu:8080/">Yanda Lu</a></li>	
+				<p>
+			</ul>		
+		</div>			
+	</div>
+	<!-- header ends here -->
+
+	<!-- content starts -->
+	<div id="content-outer" class="clear">
+	<div id="content-wrapper">
+	
+			<!-- column-one -->
+			<div id="content">
+			<div class="col-one">			
+			
+	<!--			<blockquote>-->
+	<!--			<p>If we know who we are, we will not try to become someone else in order to have-->
+	<!--			value and meaning in our lives. If we don't know who we are, we will try to -->
+	<!--			become someone who someone else wants us to be.</p>-->
+	<!--			<p class="align-right"> - Robert McGee</p>-->
+	<!--			</blockquote>-->
+					
+				<h2><a href="index.html">Quick Links</a></h2>
+			
+				<a href="http://clay.elec529.recg.rice.edu:8080/">http://clay.elec529.recg.rice.edu:8080</a><br/>
+				<a href="http://3.adriana.elec529.recg.rice.edu:8080/">Clay's Failover</a><br/>
+				<a href="http://adriana.elec529.recg.rice.edu:8080/">http://adriana.elec529.recg.rice.edu:8080</a><br/>
+				<a href="http://1.clay.elec529.recg.rice.edu:8080/">Adriana's Failover</a><br/>
+				<a href="http://dyn.ellis.elec529.recg.rice.edu:8080/">http://dyn.ellis.elec529.recg.rice.edu:8080/</a>(Ellis directly over Rice Owls)<br/>
+			
+			</div>
+
+		</div>
+		
+			<!-- column-two -->
+			<div class="col-two">
+				
+				<h3>Extra Resources</h3>
+				<ul class="sidemenu">				
+					<li><a href="files/DecentralizingInternet-Proposal.pdf">Our Proposal</a></li>
+					<li><a href="files/Midterm.pdf">Midterm Presentation</a></li>
+					<li><a href="">Demo</a></li>
+				</ul>
+			</div>
+			
+
+	</div>	
+	<!-- contents end here -->	
+	</div>
+
+		<!-- footer starts here -->	
+	<div id="footer-wrapper">
+	
+		<!-- column-one -->
+		<div id="footer">
+
+		</div>
+		
+		
+		<div id="footer-bottom">
+	
+			<p class="bottom-left">
+			    &nbsp; &copy;2014 <strong>Rice University - ELEC 529</strong> &nbsp; &nbsp;
+			    Design by Adriana Flores
+			</p>
+			
+			
+	
+		</div>	
+			
+	</div>
+	<!-- footer ends here -->
+
+</body>
+</html>

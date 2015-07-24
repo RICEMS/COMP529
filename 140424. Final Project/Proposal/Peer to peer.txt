@@ -1,0 +1,5 @@
+In our project, the devices cannot only have the ability to access to the Internet but also can access to other devices. This technology refers to peer to peer, but is not restrict peer to peer. Because our project is based on a secure region which includes our trust devices, so we need to figour out some mechanics to implement the secure peer to peer.
+
+After reading some papers, we can put a hashmap on each devices. The hashmap includes the reachable and trustful devices. Every time the device detects a new reachable device, it will put this devide into its own hashmap, otherwise it will do nothing. And every time a device receives a message, it will look up the destination in its hashmap. If it can find the destination, it will make a connection with the destination. If it cannot, it will flood the message until get a signal of success. If it cannot receive a success signal for a period of time, maybe be 5 mileseconds, it will send the signal to the central server. 
+
+In conclusion, we need to implement a secure peer to peer. It is not a difficult thing based on current technology, but we really need to do some things to completely implement it. 

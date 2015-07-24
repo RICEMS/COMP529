@@ -1,0 +1,7 @@
+Mode of Connectivity
+
+For our project, the mode of connectivity should be wireless combining with wire. The desktop computers use wire connecting with the AMAZON EC3, but the rest parts use wireless connecting with each other. Bluetooth is an alternative connectivity, but we think it cannot be used very commonly. Not each device will turn on the bluetooth because of the easily consumption of battery. In conclusioin, the mode of connectivity based on wireless between different operating system, like mobile system for Andriod and iOS and desktop system for Windows and MAC OS X.
+
+Expected outcomes
+
+Our project should a composite network mechanism with decentralize and centralize. If some data want to be sent or shared from device A to device B, and both are in their reachable range and in their secure list, they can communicate with each other in a peer to peer way.  If not, one device will send the data to central service, and the service will send the data to other devices.

@@ -1,0 +1,43 @@
+% \documentclass[conference]{IEEEtran}
+\documentclass[journal]{IEEEtran}
+
+\usepackage{xspace}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+
+\begin{document}
+%%%%%%%%% 
+\markboth{COMP/ELEC 529 - Computer Network Protocols and Systems,
+Project Proposal, Spring 2014}{right head} 
+%Title
+\title{Decentralizing the Internet}
+\author{Adriana Flores, Clayton Shepard, Ellis Giles, Haihua Shen, Yanda Lu \\
+Rice University
+}
+\maketitle
+% \newcommand{\sys}{X\xspace}
+
+%\today \\
+\begin{abstract}
+We propose to build and investigate a novel decentralized internet architecture in which servers are replaced with point to point communication for personal communication and services. %whenever possible.
+Previously, servers have been a necessary part of the Internet to act as intermediaries between people who didn't have pervasive connectivity.
+With the wide-spread adoption of smart-phones and wireless data, this antiquated paradigm is becoming less and less necessary, since there is no technological reason that devices can't connect directly to one another.
+Indeed, there are many potential advantages to decentralizing the Internet, including security, privacy, resilience, cost, and power.
+However, this novel decentralized architecture also presents many challenges, such as redundancy, uptime, and failover.
+In this course project we will build a first generation decentralized Internet framework and address some of these challenges, as well as explore the unique opportunities, presented by this architecture.
+\end{abstract}
+
+\input{1_Intro}
+\input{2_RelatedWork}
+\input{3_Methodology}
+\input{4_Schedule}
+
+%%%%%%%%%  References
+\bibliographystyle{IEEEtran} %S sort alfab.
+% \bibliography{IEEEabrv}
+\bibliography{References}
+
+\end{document}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/annotations-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/commons-dbcp-1.3.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/commons-pool-1.5.4.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/derby-10.10.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/derbyclient-10.10.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/derbynet-10.10.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/javax.mail.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/JES-Crypto-1.0.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/JES-DNS-1.0.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/JES-DNS-1.0 - Copy.zip"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/jes.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/unixUID-1.0.jar"/>
+	<classpathentry kind="lib" path="/home/adriana/claylib/wrapper.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

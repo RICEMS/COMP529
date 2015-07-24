@@ -1,0 +1,107 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+ <!--
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/</Set>
+  <Set name="war"><Property name="jetty.webapps"/>/webapps/DIAS-clay/</Set>
+  <Set name="virtualHosts">
+    <Array type="java.lang.String">
+      <Item>clay.elec529.recg.rice.edu</Item>
+      <Item>1.clay.elec529.recg.rice.edu</Item>
+      <Item>2.clay.elec529.recg.rice.edu</Item>
+      <Item>3.clay.elec529.recg.rice.edu</Item>
+      <Item>4.clay.elec529.recg.rice.edu</Item>
+      <Item>5.clay.elec529.recg.rice.edu</Item>
+      <Item>6.clay.elec529.recg.rice.edu</Item>
+    </Array>
+  </Set>
+	<Set name="welcomeFiles">
+		<Array type="String">
+				<Item>clay.html</Item>
+		</Array>
+	</Set>
+</Configure>
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/</Set>
+  <Set name="war"><Property name="jetty.webapps"/>/webapps/DIAS-adriana/</Set>
+  <Set name="virtualHosts">
+    <Array type="java.lang.String">
+      <Item>adriana.elec529.recg.rice.edu</Item>
+      <Item>1.adriana.elec529.recg.rice.edu</Item>
+      <Item>2.adriana.elec529.recg.rice.edu</Item>
+      <Item>3.adriana.elec529.recg.rice.edu</Item>
+      <Item>4.adriana.elec529.recg.rice.edu</Item>
+      <Item>5.adriana.elec529.recg.rice.edu</Item>
+      <Item>6.adriana.elec529.recg.rice.edu</Item>
+    </Array>
+  </Set>
+	<Set name="welcomeFiles">
+		<Array type="String">
+				<Item>adriana.html</Item>
+		</Array>
+	</Set>
+</Configure>
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/</Set>
+  <Set name="war"><Property name="jetty.webapps"/>/webapps/DIAS-haihua/</Set>
+  <Set name="virtualHosts">
+    <Array type="java.lang.String">
+      <Item>haihua.elec529.recg.rice.edu</Item>
+      <Item>1.haihua.elec529.recg.rice.edu</Item>
+      <Item>2.haihua.elec529.recg.rice.edu</Item>
+      <Item>3.haihua.elec529.recg.rice.edu</Item>
+      <Item>4.haihua.elec529.recg.rice.edu</Item>
+      <Item>5.haihua.elec529.recg.rice.edu</Item>
+      <Item>6.haihua.elec529.recg.rice.edu</Item>
+    </Array>
+  </Set>
+	<Set name="welcomeFiles">
+		<Array type="String">
+				<Item>haihua.html</Item>
+		</Array>
+	</Set>
+</Configure>
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/</Set>
+  <Set name="war"><Property name="jetty.webapps"/>/webapps/DIAS-ellis/</Set>
+  <Set name="virtualHosts">
+    <Array type="java.lang.String">
+      <Item>ellis.elec529.recg.rice.edu</Item>
+      <Item>1.ellis.elec529.recg.rice.edu</Item>
+      <Item>2.ellis.elec529.recg.rice.edu</Item>
+      <Item>3.ellis.elec529.recg.rice.edu</Item>
+      <Item>4.ellis.elec529.recg.rice.edu</Item>
+      <Item>5.ellis.elec529.recg.rice.edu</Item>
+      <Item>6.ellis.elec529.recg.rice.edu</Item>
+    </Array>
+  </Set>
+	<Set name="welcomeFiles">
+		<Array type="String">
+				<Item>ellis.html</Item>
+		</Array>
+	</Set>
+</Configure>
+-->
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/</Set>
+  <Set name="war"><Property name="jetty.webapps"/>/webapps/DIAS-yanda/</Set>
+  <Set name="virtualHosts">
+    <Array type="java.lang.String">
+      <Item>yanda.elec529.recg.rice.edu</Item>
+      <Item>1.yanda.elec529.recg.rice.edu</Item>
+      <Item>2.yanda.elec529.recg.rice.edu</Item>
+      <Item>3.yanda.elec529.recg.rice.edu</Item>
+      <Item>4.yanda.elec529.recg.rice.edu</Item>
+      <Item>5.yanda.elec529.recg.rice.edu</Item>
+      <Item>6.yanda.elec529.recg.rice.edu</Item>
+    </Array>
+  </Set>
+	<Set name="welcomeFiles">
+		<Array type="String">
+				<Item>yanda.html</Item>
+		</Array>
+	</Set>
+</Configure>

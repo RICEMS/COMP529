@@ -1,0 +1,74 @@
+\section{Methodology}
+\label{Methodology}
+
+\subsection{Framework}
+The Internet Domain Name Systems (DNS) provides a method for addressing computers based on host or computer names that resolve to specific IP addresses. 
+DNS also allows for directory like services such as Alias or Canonical Names, and services such as Mail Exchange records.   
+Additionally, multiple IP addresses might be configured to correspond to a single host name entry, which helps provide for fault tolerance and load balancing.
+Though the Time-To-Live, or TTL, of a record can be set to zero, numeric IP address changes for a specific DNS record must be updated manually.
+Dynamic Host Configuration Protocol (DHCP) allows for hosts to obtain dynamic IP addresses when they are connected to the network, but this can lead to problems with DNS entries as an IP address might change.
+Dynamic DNS, however, provides a means for automatically updating the DNS record of a host when the host’s IP address changes.
+This is accomplished by using a small piece of software on the host computer that periodically notifies a DNS server of the host’s IP address.
+Such Dynamic DNS providers include DNS Dynamic, Change IP, No-IP, Dyn-DNS, and Zone Edit.
+In UIA, the requestor leases a name entry from a responder for a certain period of time.
+The responder can then notify the requestor when the underlying IP address changes.
+Additionally, the devices in UIA operate in an overlay routing protocol so that changes in IP addresses or Network Address Translation can be resolved into location independent connectivity [UIA ??].
+Virtual Private Network connections allow a computer to utilize a network as if it were connected directly to the network, even when it is on another network.
+A VPN can provide local IP addresses to the network as well as access to local services.
+Mobile IP is an open standard that can give a mobile device the appearance of having a static IP address even when the device changes to a new network and gets a new physical IP address.  It works by devices having a Home Agent that forwards information to the mobile device through a Foreign Agent when the mobile device is not on the home network.
+
+\begin{comment}
+ DNS
+ VPN
+ Public IP
+ Open source
+ 
+ 1 Server with public IPs
+ 
+ 2 installing server email...
+ 
+ 3. setup DNS 
+ 
+The first stage of this project would be to install (or perhaps port)
+open-source server software, e.g. Apache, Jetty, postfix, sendmail, etc., to a
+phone.  The next stage would be to ensure reachability from the Internet.  Some
+work has already been done here, such as UIA [2]; however, since IPv6 and
+MobileIP already address this issue,
+
+it may be best to focus on other challenges
+which are more novel.  In the meantime we could use a custom APN (which Rice may
+already have), or VPN, to assign a public IP to the phones.  The final research
+stage of the project could take one of many directions including ensuring data
+redundancy, uptime measurements, distributing loads, power consumption,
+encryption, etc.  Perhaps, since this is a networking course, the focus should
+be on how to maintain seamless connectivity on node failure in such a system
+(beyond simple DNS failover).
+\end{comment}
+%
+%
+\subsection{Key Issues}
+Even when building a decentralized architecture, we require to provide reliability by 100\% availability of the data and fast accessibility. 
+In order to achieve the goals of reliability, 100\% availability and fast accessibility, our system must overcome the following.
+
+\textbf{Failover.}
+A key issue in not having a central point for data storage is that the number of point of failures are increased. 
+If a central server fails, it is easily trackable and detectable; however, in the case of a distributed architecture, the points of failure are multiplied. Even though, multiple point of failures is helpful in security purposes, it makes the system more prone to errors.
+In order to address this issue, our system relies on data replication or redundancy. Data will be distributed across multiple nodes, where we will provide a redundancy level that is proportional to the size of the network and load.
+Thus, by storying multiple copies of the data our system will combat failovers. Moreover, as explained bellow, our system will take into consideration device capabilities for data distribution, thus reducing the possibility of fail overs from power outage or other device dependent issues.
+
+Furthermore, we identify the exist varying requirements in failover strategies for different applications.
+
+\textbf{Diversity in Device Capability.}
+Since, data will be store in various types of devices, our system is required to be robust to the different device capabilities. 
+A key example of diverse capability is power or battery life. Some devices might be able to have longer up-time than others, thus our system is required to adapt to such differences. 
+A possible approach is power adaptation, by analyzing remaining battery life of a device, to then perform decisions of reducing transmission power or even remove such device from the cluster. 
+Another example of diverse capability is the storage capability of a device. Some devices might be capable of storing larger amount of data than others. 
+Overall, our system will approach different device capabilities by analyzing each device, building a feedback infrastructure and performing decisions based on each device capability. Through this we ensure data distribution is performed properly in order to achieve our goals.
+
+% \textbf{Data Replication.}
+ % \textbf{Mode of Connectivity.}
+
+
+
+
+\subsection{Expected Contributions}

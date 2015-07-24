@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<title>DIAS</title>
+
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+
+<link rel="stylesheet" href="Style.css" type="text/css" />
+
+</head>
+<body>
+
+	<!-- header starts-->
+	<div id="header-wrap">			
+				
+		<div id="header-photo">
+		<img alt="header photo" src="images/decent2.jpg" width="400" height="290" />
+		</div>
+		
+		<h1 id="logo-text"><a href="index.html" title="">DIAS</a></h1>		
+		<p id="intro">Decentralizing the Internet Application Services</p>		
+		
+		<div  id="nav">
+			<ul>
+				<li ><a href="index.html">Home DIAS</a></li>
+				<li ><a href="adriana.html">Adriana Flores</a></li>
+				<li id="current"><a href="clay.html">Clayton Shepard</a></li>
+				<li><a href="ellis.html">Ellis Giles</a></li>
+				<li><a href="haihua.html">Haihua Shen</a></li>
+				<li><a href="yanda.html">Yanda Lu</a></li>	
+			</ul>		
+		</div>			
+	</div>
+	<!-- header ends here -->
+
+	<!-- content starts -->
+	<div id="content-outer" class="clear">
+	<div id="content-wrapper">
+	
+			<!-- column-one -->
+			<div id="content">
+			<div class="col-one">			
+			
+				
+				<h2><a href="index.html">Clayton Shepard</a></h2>
+			
+				<p><a href=""><img src="images/clay.jpg" width="80" height="120" alt="Clay" class="float-right" /></a>
+				...
+				</p>
+			
+			</div>
+
+		</div>
+		
+			<!-- column-two -->
+			<div class="col-two">
+				
+				<h3>Extra Resources</h3>
+				<ul class="sidemenu">				
+					<li><a href="files/DecentralizingInternet-Proposal.pdf">Our Proposal</a></li>
+					<li><a href="files/Midterm.pdf">Midterm Presentation</a></li>
+					<li><a href="">Demo</a></li>
+				</ul>
+			</div>
+			
+
+	</div>	
+	<!-- contents end here -->	
+	</div>
+
+		<!-- footer starts here -->	
+	<div id="footer-wrapper">
+	
+		<!-- column-one -->
+		<div id="footer">
+
+		</div>
+		
+		
+		<div id="footer-bottom">
+	
+			<p class="bottom-left">
+			    &nbsp; &copy;2014 <strong>Rice University - ELEC 529</strong> &nbsp; &nbsp;
+			    Design by Adriana Flores
+			</p>
+			
+			
+	
+		</div>	
+			
+	</div>
+	<!-- footer ends here -->
+
+</body>
+</html>

@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://xlat4cast.com/schema/mail"
+    xmlns:jes="http://xlat4cast.com/schema/mail"
+    version="2.8"
+    elementFormDefault="qualified">
+   <xsd:element name="config">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="general">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="infoExternalDelegated" type="jes:info" fixed="
+            # If the network's external IP has been delegated to the server/workstation/
+            # home computer running JES and JES is to use this IP to listen for incoming
+            # connections, set the following to true. Otherwise startup will fail.
+            # This setting is not dynamically updated.
+            # Default: false"/>
+                     <xsd:element name="infoNotifyDefault" type="jes:info" fixed="
+            # Notify default user of changes to user.conf/mail.xml? This only affects the
+            # first domain in the local domains list.
+            # Default: false"/>
+                     <xsd:element name="infoWarningDisabled" type="jes:info" fixed="
+            # Disable popping up a warning message when changes to user.conf/mail.xml have been
+            # applied? If set to true it is recommended that notifyDefault is set to true and
+            # that the default user of the primary domain be specified so that any changes to
+            # a running instance become known.
+            # Default: false"/>
+                     <xsd:element name="infoThrottlingStep" type="jes:info" fixed="
+            # If JES is to be used alongside other processes and JES must not monopolize
+            # the cpu, then this setting can be used to throttle the performance of JES.
+            # For the minimum setting of zero, no throttling is imposed. A value of one
+            # corresponds to a 50 msec delay. The maximum value of 7 affects a 1000 msec
+            # delay. Throttling is applied to the incoming SMTP and POP3 services and the
+            # outgoing SMTP service.
+            # This setting supersedes and replaces the previous delivery interval setting.
+            # Default: 0
+            # Minimum: 0
+            # Maximum: 7"/>
+                     <xsd:element name="security">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="infoSecurityManagerEnabled" type="jes:info" fixed="
+            # Enable/Disable the Security Manager. A file named jes.policy is automatically
+            # generated at each server start up. Note that the default implementation of
+            # the SUN Security Manager only allows the localhost to be used as a listening
+            # address. JES bypasses the relative check and verifies the permissions in the
+            # ServiceListener instances right before instantiating the serverSockets.
+            # Default: false"/>
+                              <xsd:element name="infoPersistMaster" type="jes:info" fixed="
+            # Persist the master password. This has been the option for releases of JES2 up
+            # to version 2.1.x. Storing the master password is a considerable security risk.
+            # Nonetheless, measures are taken so that access to the file is restricted should
+            # such a choice be made.
+            # Default: false"/>
+                              <xsd:element name="infoCryptography" type="jes:info" fixed="
+            # The cryptographic limitations imposed on secure operations.
+            # Java by default offers strong but limited cryptographic key sizes.
+            # If you require unlimited cryptographic strength you should install
+            # the JCE and replace the value in this entry with unlimited.
+            # Currently this affects the AES key strength of JESVault and the
+            # cipher suites used by TLS/SSL.
+            # Default: limited"/>
+                              <xsd:element name="infoAllowRemoteRestart" type="jes:info" fixed="
+            # Changing certain (security sensitive) configuration settings requires
+            # a server restart. If these changes have been requested via the CBC,
+            # a security issue presents itself. Caution is adviced.
+            # Default: false"/>
+                              <xsd:element name="infoLegacyFileIOMode" type="jes:info" fixed="
+            # If set to true, the user directories are located under the root user
+            # directory (the standard way up to JES 2.1.x). Otherwise they are
+            # located under their respective domain directory. If even one domain
+            # directory is created, the true value is ignored. Older JES setups
+            # are automatically upgraded.
+            # Default: false"/>
+                              <xsd:element name="infoMaxPassAttempts" type="jes:info" fixed="
+            # The maximum number of password attempts a connecting client is allowed
+            # to make before a permanent negative reply is sent (RFC 4954/9)
+            # Also applies to a POP3 session.
+            # Default: 3
+            # Minimum: 3"/>
+                              <xsd:element name="infoMaxErrorCount" type="jes:info" fixed="
+            # The maximum number of errors in a SMTP/POP3 session before the connection is
+            # forcibly shut down.
+            # Default: 10
+            # Minimum: 10"/>
+                              <xsd:element name="certificateStore">
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="infoCertificateStore" type="jes:info" fixed="
+            # The CBC server, the internal instance of the Derby Network Server,
+            # the SMTPProcessor and the POP3Processor use the stores specified
+            # herein to identify themselves when initiating a secure session as
+            # the server counterpart.
+            # To learn more about the SSL/TLS security framework in java see
+            # http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html"/>
+                                       <xsd:element name="keystore">
+                                          <xsd:complexType>
+                                             <xsd:sequence>
+                                                <xsd:element name="location">
+                                                   <xsd:simpleType>
+                                                      <xsd:restriction base="xsd:string"/>
+                                                   </xsd:simpleType>
+                                                </xsd:element>
+                                             </xsd:sequence>
+                                             <xsd:attribute name="provider" default="SunJCE">
+                                                <xsd:simpleType>
+                                                   <xsd:restriction base="xsd:string">
+                                                      <xsd:enumeration value="SunJCE"/>
+                                                      <xsd:enumeration value="SUN"/>
+                                                   </xsd:restriction>
+                                                </xsd:simpleType>
+                                             </xsd:attribute>
+                                             <xsd:attribute name="type" default="JCEKS">
+                                                <xsd:simpleType>
+                                                   <xsd:restriction base="xsd:string">
+                                                      <xsd:enumeration value="JCEKS"/>
+                                                      <xsd:enumeration value="JKS"/>
+                                                   </xsd:restriction>
+                                                </xsd:simpleType>
+                                             </xsd:attribute>
+                                          </xsd:complexType>   
+                                       </xsd:element>
+                                       <xsd:element name="infoKeystore" type="jes:info" fixed="
+            # Location of keystore containing the server certificate AND associated private key
+            # The entire certificate chain is required
+            # The password is initially retrieved from the password file in the security folder.
+            # The password key/property pair is defined as 'keystore=myPassword'.
+            # If this entry does not exist or the password proves incorrect (or has been updated)
+            # a popup will request the password. (Note: if the jvm is gui-less a runtime exception
+            # is thrown. In a gui-less setup the use of the password file is therefore mandatory) 
+            # If no location is specified and there is a keystore.jceks file in the security
+            # directory the file is used
+            # If a location is specified and there is no keystore.jceks file in the security
+            # directory the specified location is used
+            # If a location is specified and there is a keystore.jceks file in the security
+            # directory the specified location is used
+            # The specified location must include the keystore filename
+            # This way if you place a keystore not named keystore.jceks in the security
+            # directory and define it here that keystore is used instead
+            # windows example keystore.location=X:\\path\\to\\my\\keystore.jks
+            # No system default"/>
+                                       <xsd:element name="infoKeystoreProvider" type="jes:info" fixed="
+            # Keystore provider. (optional)
+            # Default: SunJCE"/>
+                                       <xsd:element name="infoKeystoreType" type="jes:info" fixed="
+            # The keystore type (jks or jceks).
+            # Default: JCEKS"/>
+                                       <xsd:element name="truststore">
+                                          <xsd:complexType>
+                                             <xsd:sequence>
+                                                <xsd:element name="location">
+                                                   <xsd:simpleType>
+                                                      <xsd:restriction base="xsd:string"/>
+                                                   </xsd:simpleType>
+                                                </xsd:element>
+                                             </xsd:sequence>
+                                             <xsd:attribute name="provider" default="SUN">
+                                                <xsd:simpleType>
+                                                   <xsd:restriction base="xsd:string">
+                                                      <xsd:enumeration value="SUN"/>
+                                                      <xsd:enumeration value="SunJCE"/>
+                                                   </xsd:restriction>
+                                                </xsd:simpleType>
+                                             </xsd:attribute>
+                                             <xsd:attribute name="type" default="JKS">
+                                                <xsd:simpleType>
+                                                   <xsd:restriction base="xsd:string">
+                                                      <xsd:enumeration value="JKS"/>
+                                                      <xsd:enumeration value="JCEKS"/>
+                                                   </xsd:restriction>
+                                                </xsd:simpleType>
+                                             </xsd:attribute>
+                                          </xsd:complexType>   
+                                       </xsd:element>
+                                       <xsd:element name="infoTruststore" type="jes:info" fixed="
+            # Location of truststore. (optional)
+            # Note that if the truststore herein defined is not found, the system provided
+            # truststore is used. If one is found by the JVM that is.
+            # The usage scenarios for the trustore are
+            # a. Use the default truststore provided by the JVM. In this case leave all trustore
+            #    entries commented
+            # b. Use a custom defined truststore. Such a scenario materializes should the JVM can
+            #    not locate a default truststore or the JES admin wishes to use an alternate
+            #    trustore.
+            # At least truststore.location has to be set.
+            # JSSE default: jssecacerts, if it exists. Otherwise, cacerts"/>
+                                       <xsd:element name="infoTruststoreProvider" type="jes:info" fixed="
+            # Truststore provider. (optional, if truststore location not properly set it is ignored)
+            # Default: SUN"/>
+                                       <xsd:element name="infoTruststoreType" type="jes:info" fixed="
+            # Trustore type. (optional, if truststore location not properly set it is ignored)
+            # Default: JKS"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="debugSSL" use="optional" type="xsd:boolean"/>
+                                 </xsd:complexType>
+                              </xsd:element>
+                           </xsd:sequence>
+                           <xsd:attribute name="securityManagerEnabled" type="xsd:boolean" default="false"/>
+                           <xsd:attribute name="persistMaster" type="xsd:boolean" default="false"/>
+                           <xsd:attribute name="cryptography" default="limited">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="limited"/>
+                                    <xsd:enumeration value="unlimited"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                           <xsd:attribute name="allowRemoteRestart" type="xsd:boolean" default="false" />
+                           <xsd:attribute name="legacyFileIOMode" type="xsd:boolean" default="false" />
+                           <xsd:attribute name="maxPassAttempts" default="3">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:positiveInteger">
+                                    <xsd:minInclusive value="3"/>
+                                    <xsd:maxInclusive value="10"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                           <xsd:attribute name="maxErrorCount" default="10">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:positiveInteger">
+                                    <xsd:minInclusive value="10"/>
+                                    <xsd:maxInclusive value="50"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                        </xsd:complexType>
+                     </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="externalDelegated" type="xsd:boolean" default="false"/>
+                  <xsd:attribute name="notifyDefault" type="xsd:boolean" default="false"/>
+                  <xsd:attribute name="warningDisabled" type="xsd:boolean" default="false"/>
+                  <xsd:attribute name="throttlingStep" default="0">
+                      <xsd:simpleType>
+                          <xsd:restriction base="xsd:nonNegativeInteger">
+                              <xsd:minInclusive value="0"/>
+                              <xsd:maxInclusive value="7"/>
+                          </xsd:restriction>
+                      </xsd:simpleType>
+                  </xsd:attribute>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="backend">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="info" type="jes:info" fixed="
+            # JES can now use either the file system, a db or a LDAP server
+            # as the backend for domains, users and realms.
+            # LDAP has not yet been implemented.
+            # Selections: File, Db , LDAP
+            # Default: File"/>
+                     <xsd:element name="infoSecure" type="jes:info" fixed="
+            # Specify whether connections to the backend should be SSL/TLS secured. The
+            # underlying setup is common with the secure SMTP/POP3 connections. In other
+            # words the entries that initialize the keystore and the truststore must be
+            # correctly specified. This setting has no effect for a file based backend.
+            # If SSL is enabled for the backend then it is forcibly applied to the CBC
+            # as well.
+            # Note that client authentication is mandatory.
+            # Default: false"/>
+                     <xsd:element name="infoMinMax" type="jes:info" fixed="
+            # Specify the minimum and maximum number of users allowed to
+            # be loaded in memory when in db and LDAP backend mode.
+            # Default minimum: 30, maximum: 150"/>
+                     <xsd:element name="infoFileDomains" type="jes:info" fixed="
+            # This property defines the domains that are considered 'local'. In order
+            # to receive emails bound for local users, their domain must be defined here.
+            # Multiple domains can be declared as a whitespace separated list.
+            # ex: mydomain1.com mydomain2.com
+            # No default"/>
+                     <xsd:element name="infoFileDefaultMailBox" type="jes:info" fixed="
+            # If an email is received for a mailbox at a local domain, but the mailbox does not exist,
+            # JES can deliver the email to a 'default' mailbox. A default mailbox can be specified for
+            # each local domain individually. Separate entries with whitespace.
+            # No default"/>
+                     <xsd:element name="infoDbDirectory" type="jes:info" fixed="
+            # Specify the directory where the database will be maintained.
+            # Default is the JES root directory"/>
+                     <xsd:element name="infoDbHostPort" type="jes:info" fixed="
+            # Specify the host and port for the db instance. This can be a loopback,
+            # site-local or the zero-based address. If the backend is selected to be
+            # secure then any address is acceptable.
+            # Default: localhost, 1527"/>
+                     <xsd:choice>
+                        <xsd:element name="File">
+                           <xsd:complexType>
+                              <xsd:sequence>
+                                 <xsd:element name="domains" type="jes:stringList"/>
+                                 <xsd:element name="defaultMailbox" type="jes:stringList"/>
+                              </xsd:sequence>
+                           </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="Db">
+                           <xsd:complexType>
+                              <xsd:attribute name="directory" type="xsd:string"/>
+                              <xsd:attribute name="host" type="xsd:string" default="localhost"/>
+                              <xsd:attribute name="port" default="1527">
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:positiveInteger">
+                                       <xsd:minInclusive value="1025"/>
+                                       <xsd:maxInclusive value="65535"/>
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:attribute>
+                           </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="LDAP"/>
+                     </xsd:choice>
+                  </xsd:sequence>
+                  <xsd:attribute name="secure" type="xsd:boolean" default="false"/>
+                  <xsd:attribute name="minimum" default="30">
+                     <xsd:simpleType>
+                        <xsd:restriction base="xsd:positiveInteger">
+                           <xsd:minInclusive value="15"/>
+                           <xsd:maxInclusive value="50"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
+                  </xsd:attribute>
+                  <xsd:attribute name="maximum" default="150">
+                     <xsd:simpleType>
+                        <xsd:restriction base="xsd:positiveInteger">
+                           <xsd:minInclusive value="100"/>
+                           <xsd:maxInclusive value="1000"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
+                  </xsd:attribute>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="mail">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="info" type="jes:info" fixed="
+            # JES features an as-needed approach to activating its services.
+            # This applies to both the MTA and user mail retrieval aspect
+            # of its profile."/>
+                     <xsd:element name="infoListenAddress" type="jes:info" fixed="
+            # The listen address is the loopback or site local IP address (or host name)
+            # that JES will listen for incoming connections on. If this value is not set,
+            # it will listen on all addresses. Please see the 'external.delegated' entry
+            # in section 'Server Security Policy'.
+            # Default: 0.0.0.0"/>
+                     <xsd:element name="infoTransferMode" type="jes:info" fixed="
+            # Mail Transfer Mode. Options are: Full, Local, Remote
+            # In full mode all incoming and outgoing SMTP messages will be
+            # served as expected.
+            # In local mode, mail is delivered only to local recipients. Any
+            # connecting client is accepted as a valid mail sender, provided
+            # no security issues arise.
+            # In remote mode, no messages for local recipients are accepted.
+            # Only authenticated users (that is users belonging to a domain
+            # serviced by a JES instance, who properly authenticate) are
+            # allowed as valid mail senders.
+            # Default: Full"/>
+                     <xsd:element name="infoRetrievalMode" type="jes:info" fixed="
+            # User Mail Retrieval Mode. Options are: POP3, None
+            # Default: POP3"/>
+                     <xsd:element name="SMTP">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="infoPort" type="jes:info" fixed="
+            # The port number to listen for incoming SMTP connection on.
+            # Port 25 is the de facto SMTP port, the one used for public
+            # SMTP mail dispatch and registered by IANA as the default.
+            # Default: 25"/>
+                              <xsd:element name="infoRejectNonExistentLocal" type="jes:info" fixed="
+            # Should a nonexistent local recipient be rejected during a smtp server session
+            # or be accepted and either have the message delivered to the postmaster or if
+            # one is not set have the message bounced to the mail sender?
+            # This situation is quite an interesting one. If rejection is selected then the
+            # server discloses information concerning the existence or not of a mailbox.
+            # On the other hand if such a recipient is accepted and no postmaster is set
+            # the mail gets bounced back, so the effect is the same as in the first case.
+            # The most prudent course is to accept all local users (whether in existence or
+            # not) AND have a postmaster set. But in this case the postmaster accepts the
+            # responsibility of alerting the mail sender in case such a mail is delivered
+            # to the postmaster's mailbox.
+            # Default:false (as was up to JES 1.6.1)"/>
+                              <xsd:element name="delivery">
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="infoThreshold" type="jes:info" fixed="
+            # The server picks the messages from the disk in order to deliver them.  If some message
+            # cannot be delivered to remote SMTP server at that moment, because of some error, then the message
+            # will be kept on the disk for later delivery attempt. However server can't retry delivery
+            # indefinitely, therefore following config entry will set maximum number of retries before the server
+            # gives up on the message and moves it from smtp spool directory to failed directory.
+            # Default: 10"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="threshold" default="10">
+                                       <xsd:simpleType>
+                                          <xsd:restriction base="xsd:positiveInteger">
+                                             <xsd:minInclusive value="1"/>
+                                             <xsd:maxInclusive value="60"/>
+                                          </xsd:restriction>
+                                       </xsd:simpleType>
+                                    </xsd:attribute>
+                                 </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="secureChannel" type="jes:secureChannel"/>
+                              <xsd:element name="authentication">
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="infoAllowClearText" type="jes:info" fixed="
+            # Allow clear text passwords or not (Selections are always, encryptedOnly, never)
+            # encryptedOnly refers to a TLS/SSL encrypted connection"/>
+                                       <xsd:element name="infoVerifyIP" type="jes:info" fixed="
+            # Use the dnswl/dnsbl facility
+            # Default: false"/>
+                                       <xsd:element name="IPOverride" type="jes:IPList"/>
+                                       <xsd:element name="infoIPOverride" type="jes:info" fixed="
+            # Individual IP addresses can be specified to allow email to be relayed.
+            # This can be useful if you want to provide access to specific machines or
+            # sets of machines, including your localhost.  Wildcards can be used
+            # in the lower order octets to specify a range of addresses.
+            # ex: 192.168.*.* allows all addresses that start with 192.168 to
+            # relay email. Partial wildcards are not allowed. ex: 192.168.*0.1 is invalid.
+            # Multiple addresses can be specified as a whitespace separated list."/>
+                                       <xsd:element name="MailFromOverride" type="jes:stringList"/>
+                                       <xsd:element name="infoMailFromOverride" type="jes:info" fixed="
+            # Individual 'from' email addresses can be specified to allow email
+            # sent from that address to be relayed.
+            # WARNING: Anyone who knows what email addresses are allowed to relay
+            # may send email from those addresses, including SPAMers.  This should
+            # be used with caution.
+            # Multiple email addresses can be specified as a whitespace separated list.
+            # Email addresses are case insensitive.
+            # You can specify a blank username (@domain) to allow a whole domain."/>
+                                       <xsd:element name="POPBeforeSMTP">
+                                          <xsd:complexType>
+                                             <xsd:sequence>
+                                                <xsd:element name="infoPOPBeforeSMTP" type="jes:info" fixed="
+            # POP before SMTP enables users who check their POP3 account to
+            # relay mail for a given period of time.  When they authenticate
+            # with the POP3 server, their IP address is added to a 'allow relay'
+            # list for a given period of time.
+            # Default: false"/>
+                                                <xsd:element name="infoPOPBeforeSMTPTimeout" type="jes:info" fixed="
+            # If POP before SMTP is enabled, this value defines the length of time in minutes
+            # that the authenticated IP address stays valid.
+            # Default: 10"/>
+                                             </xsd:sequence>
+                                             <xsd:attribute name="enable" type="xsd:boolean" default="false"/>
+                                             <xsd:attribute name="timeout" default="10">
+                                                <xsd:simpleType>
+                                                   <xsd:restriction base="xsd:positiveInteger">
+                                                      <xsd:minInclusive value="1"/>
+                                                      <xsd:maxInclusive value="30"/>
+                                                   </xsd:restriction>
+                                                </xsd:simpleType>
+                                             </xsd:attribute>
+                                          </xsd:complexType>
+                                       </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="allowClearText" type="jes:allowClearText" default="always"/>
+                                    <xsd:attribute name="verifyIP" type="xsd:boolean" default="false"/>
+                                 </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="extensions">
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="infoHELO" type="jes:info" fixed="
+            # Enable/disable the HELO command during a receiver SMTP session.
+            # It is strongly recommended not to have this enabled. It will be set to
+            # disable if either the secure connections are activated, SSL/TLS is enabled on
+            # standard ports or DIGEST-MD5/GSS-API are enabled. Enabling HELO presents an
+            # extremely dangerous choice and effectively cancels any security context.
+            # Default: false"/>
+                                       <xsd:element name="infoMIME8bit" type="jes:info" fixed="
+            # Enable/disable the SMTP 8bitmime feature
+            # Default: true"/>
+                                       <xsd:element name="infoPipelining" type="jes:info" fixed="
+            # Enable/disable the SMTP pipelining feature (only applies when server in
+            # receiving mode)
+            # Default: false"/>
+                                       <xsd:element name="infoSize" type="jes:info" fixed="
+            # The server limits the size of incoming messages.
+            # The size is declared in MebiBytes (MiB).
+            # Minimum: 1
+            # Default: 5"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="HELO" type="xsd:boolean" default="true"/>
+                                    <xsd:attribute name="MIME8bit" type="xsd:boolean" default="true"/>
+                                    <xsd:attribute name="pipelining" type="xsd:boolean" default="false"/>
+                                    <xsd:attribute name="size" default="5">
+                                       <xsd:simpleType>
+                                          <xsd:restriction base="xsd:positiveInteger">
+                                             <xsd:minInclusive value="1"/>
+                                             <xsd:maxInclusive value="1024"/>
+                                          </xsd:restriction>
+                                       </xsd:simpleType>
+                                    </xsd:attribute>
+                                 </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="rcptPolicy">
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="maxValidRcpt" default="100">
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="xsd:positiveInteger">
+                                                <xsd:minInclusive value="100"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
+                                       </xsd:element>
+                                       <xsd:element name="infoMaxValidRcpt" type="jes:info" fixed="
+            # Maximum number of ACCEPTED RCPT commands.
+            # Any RCPT command exceeding this threshold will receive a 452 reply.
+            # Default: 100
+            # Minimum: 100 (RFC 5321/4.5.3.1.8)"/>
+                                       <xsd:element name="addPctRcpt" default="10">
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="xsd:positiveInteger">
+                                                <xsd:minInclusive value="5"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
+                                       </xsd:element>
+                                       <xsd:element name="infoAddPctRcpt" type="jes:info" fixed="
+            # Added percentage to max.valid.rcpt.cmd that will result in a 503 reply
+            # to a DATA command.
+            # Default: 10
+            # Minimum: 5"/>
+                                       <xsd:element name="FailedRcptPolicy" type="jes:info" fixed="
+            # The policy for the two following settings is applied as such:
+            # If there is more than the minimum failed RCPT cmds AND the percentage of
+            # failed RCPT commands per total RCPT commands is greater than the minimum
+            # percentage then force a disconnection. This is in accordance with
+            # RFC 5321/3.8,7.8"/>
+                                       <xsd:element name="minTotFailRcpt" default="20">
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="xsd:positiveInteger">
+                                                <xsd:minInclusive value="20"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
+                                       </xsd:element>
+                                       <xsd:element name="infoMinTotFailRcpt" type="jes:info" fixed="
+            # Minimum total of failed RCPT commands that will result in a forced
+            # disconnection.
+            # Default: 20
+            # Minimum: 20"/>
+                                       <xsd:element name="minPctFailRcpt" default="90">
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="xsd:positiveInteger">
+                                                <xsd:minInclusive value="70"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
+                                       </xsd:element>
+                                       <xsd:element name="infoMinPctFailRcpt" type="jes:info" fixed="
+            # Minimum percentage of failed RCPT commands that will result in a forced
+            # disconnection.
+            # Default: 90
+            # Minimum: 70"/>
+                                    </xsd:sequence>
+                                 </xsd:complexType>
+                              </xsd:element>
+                           </xsd:sequence>
+                           <xsd:attribute name="port" default="25">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:positiveInteger">
+                                    <xsd:minInclusive value="1"/>
+                                    <xsd:maxInclusive value="65535"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                           <xsd:attribute name="rejectNonExistentLocal" type="xsd:boolean" default="false"/>
+                        </xsd:complexType>
+                     </xsd:element>
+                     <xsd:element name="POP3">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="infoPort" type="jes:info" fixed="
+            # The port number to listen for incoming POP3 connections on.
+            # Port 110 is the de facto POP3 port, the one used for public
+            # POP3 mail retrieval and registered by IANA as the default.
+            # Default: 110"/>
+                              <xsd:element name="secureChannel" type="jes:secureChannel">
+                              </xsd:element>
+                              <xsd:element name="authentication">
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="infoAllowClearText" type="jes:info" fixed="
+            # Allow clear text passwords or not (Selections are always, encryptedOnly, never)
+            # encryptedOnly refers to a TLS/SSL encrypted connection"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="allowClearText" type="jes:allowClearText" default="always"/>
+                                 </xsd:complexType>
+                              </xsd:element>
+                           </xsd:sequence>
+                           <xsd:attribute name="port" default="110">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:positiveInteger">
+                                    <xsd:minInclusive value="1"/>
+                                    <xsd:maxInclusive value="65535"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                        </xsd:complexType>
+                     </xsd:element>
+                     <xsd:element name="authMechs">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="infoQOP" type="jes:info" fixed="
+            # Select the protection level the server will advertise during a SASL
+            # authentication negotiation. Options are any combination of auth,auth-int,
+            # auth-conf separated by commas.
+            # auth-int and auth-conf are supported by DIGEST-MD5 and GSSAPI
+            # Default: all three options"/>
+                              <xsd:element name="CRAM">
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:token">
+                                       <xsd:pattern value="(SHA-512|SHA-384|SHA-256|SHA-1|MD5|\s{0})( *, *(SHA-512|SHA-384|SHA-256|SHA-1|MD5))*"/>
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="infoCRAM" type="jes:info" fixed="
+            # Advertise the members of the CRAM SASL authentication mechanism family?
+            # Select (comma delimited) any of SHA-512(non standard), SHA-256(non standard),
+            #  SHA-384(non standard), SHA-1(non standard), MD5
+            # Use of CRAM-MD5 is questionable (see rfc 6151)
+            # Use of any of the non-standard hash functions suggests that the connecting
+            # client also supports them
+            # If none supplied, CRAM will not be advertised 
+            # Default: none"/>
+                              <xsd:element name="DIGEST-MD5">
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="infoDIGEST-MD5" type="jes:info" fixed="
+            # Advertise the DIGEST-MD5 SASL authentication mechanism?
+            # Default: false"/>
+                                       <xsd:element name="ciphers" default="3des,rc4">
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="xsd:token">
+                                                <xsd:pattern value="(3des|des|rc4|rc4-56|rc4-40|\s{0})( *, *(3des|des|rc4|rc4-56|rc4-40))*"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
+                                       </xsd:element>
+                                       <xsd:element name="infoCiphers" type="jes:info" fixed="
+            # Select the ciphers to be used by a sasl digest-md5 confidentiality
+            # protected session. Available options are 3des,des,rc4,rc4-40,rc4-56.
+            # Default: 3des,rc4"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="enable" type="xsd:boolean" default="false"/>
+                                 </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="SCRAM">
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:token">
+                                       <xsd:pattern value="(SHA-512|SHA-384|SHA-256|SHA-1|\s{0})( *, *(SHA-512|SHA-384|SHA-256|SHA-1))*"/>
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="infoSCRAM" type="jes:info" fixed="
+            # Advertise the members of the SCRAM SASL authentication mechanism family?
+            # Select (comma delimited) any of SHA-512(non standard),
+            # SHA-384(non standard), SHA-256(non standard), SHA-1
+            # The current implementation does not support channel bindings
+            # Use of any of the non-standard hash functions suggests that the connecting
+            # client also supports them
+            # If none supplied, SCRAM will not be advertised 
+            # Default: none"/>
+                              <xsd:element name="GSS-API">
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="info" type="jes:info" fixed="
+            # Advertise the GSSAPI SASL authentication mechanism?
+            # Default: false"/>
+                                       <xsd:element name="infoRealm" type="jes:info" fixed="
+            # The realm(aka Domain in Windows) JES's smtp kerberos 5 service is a part of.
+            # Example: EXAMPLE.COM. Will be converted to upper case.
+            # No default"/>
+                                       <xsd:element name="infoKdc" type="jes:info" fixed="
+            # The realm's kerberos 5 kdc host name, e.g. krb.example.com
+            # No default"/>
+                                       <xsd:element name="infoPrincipal" type="jes:info" fixed="
+            # Set the principal name to be used by JES to authenticate itself during
+            # a SASL JGSS negotiation. The typical form of a Kerberos 5 service principal
+            # is serviceType/hostname@REALM, e.g. smtp/mail.example.com@EXAMPLE.COM.
+            # Please note that per RFC 4752 'Use of server's principal names having
+            # GSS_C_NT_HOSTBASED_SERVICE name type and 'service@hostname' format...
+            # is RECOMMENDED'. However SUN's GSS SASL implementation requires that a
+            # SASLServer is acquired from the SASL factory by calling a static method
+            # where both protocol(serviceType) and server name are supplied. If one
+            # checks out the openJDK6 source's com.sun.security.sasl.gsskerbGssKrb5Server
+            # file it is obvious that the service/host format is mandatory when using
+            # SUN's implementation. The consequence of this is that
+            # non GSS_C_NT_HOSTBASED_SERVICE identities can not be used. A dual smtp/pop
+            # serviceType is assumed by JES and if no smtp/hostname and pop/hostname principal
+            # exists in the default kerberos realm authentication will fail. To conclude,
+            # the following formats are acceptable:
+            # 1. host.example.com: smtp and pop are assumed to be the service types.
+            # 2. SMTPServiceName:POP3ServiceName/host.example.com: ....serviceName(e.g. ldap)
+            # is used instead of smtp or pop. Possible combos for this case are:
+            # ldap:pop/host.example.com, (use ldap as smtp, pop as pop)
+            # :ldap/host.example.com, (use default as smtp, ldap as pop)
+            # pop:/host.example.com, (use pop as smtp, default as pop)
+            # ldap/host.example.com. (use ldap as both smtp and pop)
+            # A small courtesy to JES admins should a kerberos service principal already
+            # exist and it is not desired/acceptable to create a new principal. In both
+            # cases the realm is assumed to be the default realm supplied. The matching is
+            # done internally by sasl/kerberos, not JES.
+            # The password(s) is (are) initially retrieved from the password file in the
+            # security folder. The password key/property pair for a (each) service is defined
+            # as 'serviceName=servicePassword'. If this entry does not exist or the service
+            # keys can not be obtained from the keytab (or use of a keytab has not been selected)
+            # a popup will request the password. (Note: if the jvm is gui-less a runtime exception
+            # is thrown. In a gui-less setup the use of the password file is therefore mandatory) 
+            # No default"/>
+                                       <xsd:element name="infoStoreKey" type="jes:info" fixed="
+            # A flag to indicate whether the principal's key is to be stored in the
+            # subject's private credentials.
+            # Default: true"/>
+                                       <xsd:element name="infoUseKeytab" type="jes:info" fixed="
+            # A flag to indicate whether to attempt to acquire the principal's key from the
+            # keytab. If this fails, or the flag is set to false, a window will popup to
+            # request the password at startup.
+            # Default: false"/>
+                                       <xsd:element name="infoKeytab" type="jes:info" fixed="
+            # The location of the keytab. Must be an absolute path,
+            # e.g. /home/username/krb5.keytab
+            # No default"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="enable" type="xsd:boolean" default="false"/>
+                                    <xsd:attribute name="realm" type="xsd:string"/>
+                                    <xsd:attribute name="kdc" type="xsd:string"/>
+                                    <xsd:attribute name="principal" type="xsd:string"/>
+                                    <xsd:attribute name="storeKey" type="xsd:boolean" default="true"/>
+                                    <xsd:attribute name="useKeytab" type="xsd:boolean" default="true"/>
+                                    <xsd:attribute name="keytab" type="xsd:string"/>
+                                 </xsd:complexType>
+                              </xsd:element>
+                           </xsd:sequence>
+                           <xsd:attribute name="qop" default="auth,auth-int,auth-conf">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:token">
+                                    <xsd:pattern value="(auth|auth-int|auth-conf|\s{0})( *, *(auth|auth-int|auth-conf))*"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                        </xsd:complexType>
+                     </xsd:element>
+                     <xsd:element name="threads">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="info" type="jes:info" fixed="
+            # Each service is configured to use a pool of threads to handle incoming
+            # connections.  This property defines the number of threads allocated to
+            # each pool. The number of threads will be the total number of clients
+            # each non secure service (SMTP, POP3) can handle at one time.
+            # Default: 5"/>
+                           </xsd:sequence>
+                           <xsd:attribute name="number" default="5">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:positiveInteger">
+                                    <xsd:minInclusive value="2"/>
+                                    <xsd:maxInclusive value="50"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                        </xsd:complexType>
+                     </xsd:element>
+                     <xsd:element name="secure">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="info" type="jes:info" fixed="
+            # Each service is configured to use a pool of threads to handle incoming
+            # connections.  This property defines the number of threads allocated to
+            # each pool.  The number of threads will be the total number of clients
+            # each secure service (secure SMTP, secure POP3) can handle at one time.
+            # Default: 2"/>
+                              <xsd:element name="infoSMTP" type="jes:info" fixed="
+            # The port number to listen for incoming Secure SMTP connection on.
+            # This value should be set to 465 unless you really know what you are doing.
+            # Default: 465"/>
+                              <xsd:element name="infoPOP3" type="jes:info" fixed="
+            # The port number to listen for incoming Secure POP3 connections on.
+            # This value should be set to 995 unless you really know what you are doing.
+            # Default: 995"/>
+                           </xsd:sequence>
+                           <xsd:attribute name="enable" type="xsd:boolean" default="false"/>
+                           <xsd:attribute name="number" default="2">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:positiveInteger">
+                                    <xsd:minInclusive value="1"/>
+                                    <xsd:maxInclusive value="50"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                           <xsd:attribute name="SMTP" default="465">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:positiveInteger">
+                                    <xsd:minInclusive value="1"/>
+                                    <xsd:maxInclusive value="65535"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                           <xsd:attribute name="POP3" default="995">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:positiveInteger">
+                                    <xsd:minInclusive value="1"/>
+                                    <xsd:maxInclusive value="65535"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:attribute>
+                        </xsd:complexType>
+                     </xsd:element>
+                     <xsd:element name="outgoingSMTPServer">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="infoSecure" type="jes:info" fixed="
+            # Use TLS/SSL for outgoing SMTP messages if the server being contacted supports
+            # the STARTTLS extension (RFC 3207)"/>
+                              <xsd:element name="server">
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:token">
+                                       <xsd:pattern value="((([\p{IsBasicLatin}-[@:/]]+(@[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?)*)?:)?[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?)*(:([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-5][0-9][0-9][0-9][0-9]|6[0-4][0-9][0-9][0-9]|65(([0-4][0-9][0-9])|(5[0-2][0-9])|(53[0-5])){1}))?(/[a-zA-Z0-9!#$%&amp;'*+\-/=?\^_`{|}~][.a-zA-Z0-9!#$%&amp;'*+\-/=?\^_`{|}~]*:[\p{IsBasicLatin}-[:]]+)?)||\s{0})( *, *(([\p{IsBasicLatin}-[@:/]]+(@[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?)*)?:)?[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?)*(:([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-5][0-9][0-9][0-9][0-9]|6[0-4][0-9][0-9][0-9]|65(([0-4][0-9][0-9])|(5[0-2][0-9])|(53[0-5])){1}))?(/[a-zA-Z0-9!#$%&amp;'*+\-/=?\^_`{|}~][.a-zA-Z0-9!#$%&amp;'*+\-/=?\^_`{|}~]*:[\p{IsBasicLatin}-[:]]+)?))*"/>
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="infoServer" type="jes:info" fixed="
+            # It may be necessary to configure your SMTP server to deliver all outgoing
+            # mail through a gateway SMTP server.  This may be the case if your ISP blocks
+            # outgoing SMTP connections.  This setting allows you to define a single SMTP
+            # server that your server will send all remote mail to.
+            # Optional: add ':PortNumber' after the SMTP server to specify the port number.
+            #           e.g.: smtp.myisp.com:25
+            # Optional: add '/user:password' to specify a username and password for the
+            #           default SMTP server.
+            #           e.g.: smtp.myisp.com:25/user:pass
+            # Optional: prefix 'realm:' to specify a DIGEST-MD5 realm.
+            #           A username and password is required
+            #           e.g: users@myisp.com:smtp.myisp.com:25/user:pass
+            #           The format of a 'realm' is dependant upon the implementation of the
+            #           gateway SMTP server. A JES DIGEST-MD5 authentication attempt will
+            #           look for an exact (case-sensitive) match between the above defined
+            #           realm and a realm as supplied by the 'realm' directive of the initial
+            #           digest-challenge.
+            # More than one server can be defined in a whitespace seperated list."/>
+                           </xsd:sequence>
+                           <xsd:attribute name="secure" type="xsd:boolean" default="false"/>
+                        </xsd:complexType>
+                     </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="listenAddress" default="0.0.0.0"/>
+                  <xsd:attribute name="transferMode" default="Full">
+                     <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                           <xsd:enumeration value="Full"/>
+                           <xsd:enumeration value="Local"/>
+                           <xsd:enumeration value="Remote"/>
+                           <xsd:enumeration value="Testing"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
+                  </xsd:attribute>
+                  <xsd:attribute name="retrievalMode" default="POP3">
+                     <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                           <xsd:enumeration value="POP3"/>
+                           <xsd:enumeration value="None"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
+                  </xsd:attribute>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="directories">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="SMTP" type="xsd:string"></xsd:element>
+                     <xsd:element name="infoSMTP" type="jes:info" fixed="
+            # Define the directory where all incoming SMTP messages are
+            # to be stored. If not specified a default is used.
+            # Default: (JES dir in main class arguments)/smtp"/>
+                     <xsd:element name="users" type="xsd:string"></xsd:element>
+                     <xsd:element name="infoUsers" type="jes:info" fixed="
+            # Define the directory where the user accounts are to be
+            # located. If not specified a default is used.
+            # Default: (JES dir in main class arguments)/users"/>
+                     <xsd:element name="failed" type="xsd:string"></xsd:element>
+                     <xsd:element name="infoFailed" type="jes:info" fixed="
+            # Define the directory where all failed SMTP messages are
+            # to be stored. If not specified a default is used.
+            # Default: (JES dir in main class arguments)/failed"/>
+                     <xsd:element name="testing" type="xsd:string"></xsd:element>
+                     <xsd:element name="infoTesting" type="jes:info" fixed="
+            # When this setting points to a valid destination (e.g. a folder) then
+            # all outgoing messages, addressed to either local or remote users will be
+            # deliver to this destination instead. Do note that Mail Transfer Mode is
+            # set to an internal only testing mode, that performs no checks on the
+            # MAIL FROM and RCPT TO addresses.
+            # No default"/>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="amavis-dnew">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="info" type="jes:info" fixed="
+            # NOTE: These settings are NOT reconfigurable while the server is running
+            # Activate amavisd-new support
+            # A facility that allows submitting incoming mail to amavisd-new, which can
+            # be configured to scan for viruses and optionally spam (via spamAssassin).
+            # The setup is based on the principles of a dual-MTA scenario.
+            # See http://www.ijs.si/software/amavisd/README.sendmail-dual.txt
+            # Semantics from the above URL will be used throughout this section.
+            # Default: false"/>
+                     <xsd:element name="infoListenAddress" type="jes:info" fixed="
+            # The internal/loopback address space or domain name amavisd has been
+            # configured to listen on for the Receiving-MTA's forwarded messages.
+            # Default: the same as the JES listen address"/>
+                     <xsd:element name="infoListenPort" type="jes:info" fixed="
+            # The port amavisd is using to listen for incoming connections from JES.
+            # Default: 10024"/>
+                     <xsd:element name="TXDirectory" type="xsd:string"></xsd:element>
+                     <xsd:element name="TXDirectoryInfo" type="jes:info" fixed="
+            # The Transmitting MTA's smtp directory. Has to be defined explicitly and
+            # MUST NOT be the same as the Receiving MTA's smtp directory. If these
+            # restrictions are violated amavisd support will not be activated.
+            # Default: (JES dir in main class arguments)/amavisd"/>
+                     <xsd:element name="TXPort" default="10025">
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:positiveInteger">
+                              <xsd:minInclusive value="1025"/>
+                              <xsd:maxInclusive value="65535"/>
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="TXPortInfo" type="jes:info" fixed="
+            # The Transmitting MTA's smtp port.
+            # JES uses it to receive the amavisd filtered messages.
+            # Default: 10025"/>
+                  </xsd:sequence>
+                  <xsd:attribute name="enable" type="xsd:boolean" default="false"/>
+                  <xsd:attribute name="listenAddress" default="0.0.0.0"/>
+                  <xsd:attribute name="listenPort" default="10024">
+                     <xsd:simpleType>
+                        <xsd:restriction base="xsd:positiveInteger">
+                           <xsd:maxInclusive value="65535"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
+                  </xsd:attribute>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="cbc">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="info" type="jes:info" fixed="
+            # The configuration address is the local IP address (not a host name)
+            # that JES will listen for incoming configuration commands on.  Only
+            # internal network addresses are allowed (that is the loopback and site
+            # local addresses).
+            # Default address: localhost
+            # Default port: 41001"/>
+                     <xsd:element name="infoSecure" type="jes:info" fixed="
+            # Specify whether the CBC should be SSL/TLS secured. The underlying setup
+            # is common with the secure SMTP/POP3 connections. In other words the entries
+            # that initialize the keystore and the truststore must be correctly specified.
+            # If SSL is enabled for the CBC then it is forcibly applied to the backend
+            # as well.
+            # Note that client authentication is mandatory.
+            # Default: false"/>
+                  </xsd:sequence>
+                  <xsd:attribute name="enable" type="xsd:boolean" default="false"/>
+                  <xsd:attribute name="secure" type="xsd:boolean" default="false"/>
+                  <xsd:attribute name="listenAddress" type="xsd:string" default="localhost"/>
+                  <xsd:attribute name="port" default="41001">
+                     <xsd:simpleType>
+                        <xsd:restriction base="xsd:positiveInteger">
+                           <xsd:minInclusive value="1025"/>
+                           <xsd:maxInclusive value="65535"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
+                  </xsd:attribute>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="javaWrapper">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="info" type="jes:info" fixed="
+            # These settings are meant to correct java wrapper's behaviour.
+            # Define these so as to reflect the settings responding to your current
+            # system configuration."/>
+                     <xsd:element name="language" type="xsd:string" default="en"></xsd:element>
+                     <xsd:element name="country" type="xsd:string" default="US"></xsd:element>
+                     <xsd:element name="fileEncoding" type="xsd:string" default="UTF-8"></xsd:element>
+                     <xsd:element name="OSName" type="xsd:string" default="Linux"></xsd:element>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="schemaVersion" type="xsd:decimal" use="required"/>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:simpleType name="stringList" id="stringList">
+      <xsd:restriction>
+         <xsd:simpleType>
+            <xsd:list>
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string"/>
+               </xsd:simpleType>
+            </xsd:list>
+         </xsd:simpleType>
+         <xsd:minLength value="0"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="IPList" id="IPList">
+      <xsd:restriction>
+         <xsd:simpleType>
+            <xsd:list>
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:token">
+                     <xsd:pattern value="((1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]).){2}(((1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])|\*).){1}((1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])|\*)"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:list>
+         </xsd:simpleType>
+         <xsd:minLength value="0"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="info" id="info">
+      <xsd:restriction>
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:whiteSpace value="collapse"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:complexType name="secureChannel" id="secureChannel">
+      <xsd:sequence>
+         <xsd:element name="info" type="jes:info" fixed="
+            # Use TLS/SSL on standard listening ports"/>
+         <xsd:element name="infoSecure" type="jes:info" fixed="
+            # Define here the desired authentication for a connecting client (SMTP/POP3)
+            # in a TLS/SSL context. Allowed values are required, requested, no.
+            # Default: no"/>
+      </xsd:sequence>
+      <xsd:attribute name="enable" type="xsd:boolean" default="false"/>
+      <xsd:attribute name="clientAuth" default="no">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:enumeration value="no"/>
+               <xsd:enumeration value="requested"/>
+               <xsd:enumeration value="required"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+   </xsd:complexType>
+   <xsd:simpleType name="allowClearText" id="allowClearText">
+      <xsd:restriction>
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:enumeration value="always"/>
+               <xsd:enumeration value="encryptedOnly"/>
+               <xsd:enumeration value="never"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

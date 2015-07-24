@@ -1,0 +1,67 @@
+\section{Related Work}
+\label{Related Work}
+
+\subsection{Decentralized Internet}
+%Haihua
+%I haven't used Latex before and I don't have it installed right now. Would someone please help me translate the following paragraph into Latex syntax? Thanks! -Haihua
+Decentralized Internet is a hot topic for network researchers. From the application perspective, centralization and decentralization each has advantages and disadvantages ~\cite{schuff2001}. 
+Some of the more recent works have been done to provide alternative decentralized solutions for online social networks. 
+For example, ~\cite{persona} proposed a decentralized version of Facebook to enhance privacy, and ~\cite{xu2010} suggested a P2P version of Twitter to improve scalability and reliability. 
+In January 2014, a new project called Bitcloud was launched by the Bitcoin developers, seeking the possibility to decentralize the current Internet in order to improve privacy, security, and solve other current problem (like censorship) in today's centralized network.
+Our goal is to investigate the possibility to use our phone as decentralized storage to support applications in a decentralized network. 
+To achieve our goal, we would need to look into a variety of issues, such as the trustworthiness of storage, the reliability of communication, and the ability to recover from single-device failures.
+
+\subsection{Data Replication}
+%Ellis
+\input{DataReplication.tex}
+
+\subsection{Connectivity}~\label{sec:relconn}
+%Clay
+A key requirement for this architecture to be possible is pervasive connectivity and \emph{reachability}.
+It is not enough for the device to have internet connectivity, but it must also be reachable from the internet.
+This is a key challenge for our project, since almost all cell phone providers and WiFi access points hide their clients behind network address translation (NAT) and or a firewall which blocks reachability from the internet.
+A lot of work has already been done on ensuring reachability, with the key technologies being IPv6, which includes Mobile IP, ~\cite{deering1998internet} as well as the Unmanaged Internet Architecture (UIA) project~\cite{ford2008uia, ford2006persistent}.
+
+One of the primary motivations for using NAT is the scarcity of IPv4 addresses, as it allows multiple devices to connect to the internet through one public IP address.
+IPv6 solves this limitation, as it has $7.9 \times 10^{28}$ times as many addresses as IPv4.
+Additionally it includes Mobile IP, which allows devices to be located and contacted by their "`home address"' regardless of where the are on the internet.
+
+Another very relevant project is Unmanaged Internet Architecture (UIA), as it seemingly solves the connectivity and reachability issue even in the current state of the internet, however it requires some assistance from devices with public IPs to enable NAT traversal.
+Additionally it provides other very relevant services such as security, group management, overlay routing, and personal naming.
+
+In short, while connectivity is an important part of our project, it seems that it is largely a solved problem, and thus will not be our focus.
+While it is unlikely cellular provides will enable public reachability to cell phones, this is due to business and security reasons rather than a technological limitation.
+% Note: I just came across Bitcloud [3], which deserves to be mentioned here as
+% well.  I haven’t had a chance to look at it closely; while it looks to have
+% similarities, it seems its goals and implementation are quite a bit different
+% than what I’m proposing.
+
+
+\subsection{Security}
+%Adriana
+A key concern when decentralizing the Internet is the storage and distribution of data among peers and friends. 
+Trusting other devices with our personal data causes uncertainty, specially regarding integrity and privacy of the data. 
+There exist vast previous work in data security, however we would to focus in secured distributed systems and data storage.
+In distributed systems, there is no central system to protect, thus all nodes must collaborate to ensure security \cite{sit2002security}. 
+A common approach of these systems is the peer-to-peer distributed hash lookup systems \cite{ratnasamy2001scalable, rowstron2001pastry, stoica2001chord}, in which lookups for keys are performed by series of nodes and forwarded to the node ultimately responsible for the key \cite{sit2002security}. 
+Overall, approaches to ensure confidentiality, integrity and availability (CIA) must have capabilities of encryption, stringent access controls to data, backup and safe storage of data \cite{kaufman2009data}.
+
+\subsection{Peer-Peer}
+%Yanda
+A common method to activate peer-peer communication, is the utilization of hashmaps. 
+In our project peer to peer communication is based on a secure cluster which includes our trusted devices, thus a hashmap only includes the reachable and trustful devices. 
+Existing hashmaps implementation works as follows.
+Every time the device detects a new reachable device, it will put this divide into its own hashmap. 
+And every time a device receives a message, it will look up the destination in its hashmap, if the destination is not found, it will make a connection with the destination. 
+If it cannot, it will flood the message until get a signal of success. 
+If it cannot receive a success signal for a period of time, maybe be 5 milliseconds, it will send the signal to the central server.
+In contrast to this approach, our system will not depend in a central server.
+There exist a plethora of current P2P frameworks such as Chord, Pastry, PAST, Tapestry, and Viceroy ~\cite{LUAsurvey}.
+% 
+% In our project, the devices cannot only have the ability to access to the Internet but also can access to other devices. 
+% This technology refers to Peer-to-Peer, or P2P, but is not restricted solely to P2P. Because our project is based on a secure cluster which includes our trusted devices, we need to figure out some mechanics to implement the secure P2P.
+% After reading some papers, we can put a hashmap on each device. The hashmap includes the reachable and trustful devices. 
+% Every time the device detects a new reachable device, it will put this divide into its own hashmap, otherwise it will do nothing ~\cite{LUAsurvey}. 
+% And every time a device receives a message, it will look up the destination in its hashmap. If it can find the destination, it will make a connection with the destination. If it cannot, it will flood the message until get a signal of success. If it cannot receive a success signal for a period of time, maybe be 5 milliseconds, it will send the signal to the central server.
+% There exsit a plethora of current P2P frameworks such as Chord, Pastry, PAST, Tapestry, and Viceroy ~\cite{LUAsurvey}.
+%In conclusion, we need to implement a secure peer to peer. It is not a difficult thing based on current technology, but we really need to do some things to completely implement it. 

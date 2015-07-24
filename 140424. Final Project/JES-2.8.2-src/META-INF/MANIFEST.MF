@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.6.0_45
+Built-By: Andreas Kyrmegalos
+Specification-Title: JES
+Created-By: Apache Maven 3.0.5
+Specification-Version: 2.8.2
+Archiver-Version: Plexus Archiver
+

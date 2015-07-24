@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JES" default="copyTo" basedir=".">
+   <property file="copyTo.properties"/>
+   <target name="copyTo" if="test.dir">
+       <copy file="target/jes.jar" tofile="${test.dir}/jes.jar"/>
+   </target>
+</project>

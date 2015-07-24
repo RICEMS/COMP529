@@ -1,0 +1,20 @@
+require-mschap-v2
+netmask 255.255.255.192
+ms-dns 10.129.92.32
+ms-dns 10.136.93.15
+#ms-dns 8.8.8.8
+#ms-dns 8.8.4.4
+#usepeerdns
+#defaultroute
+#replacedefaultroute
+auth
+mtu 1200
+mru 1000
+crtscts
+hide-password
+#modem
+local
+name l2tpd
+proxyarp
+lcp-echo-interval 30
+lcp-echo-failure 4

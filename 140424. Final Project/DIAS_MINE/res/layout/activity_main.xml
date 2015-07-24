@@ -1,0 +1,446 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <!-- Title name -->
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif"
+        android:shadowColor="#0000CC"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1.5"
+        android:text="Decentralized Internet Application Services"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:typeface="monospace"
+         android:gravity="center"
+        android:textStyle="bold" />
+
+    <!-- ======================= -->
+    <!-- Node Name -->
+
+    <TextView
+        android:id="@+id/NodeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textTitle"
+        android:layout_below="@+id/textTitle"
+        android:layout_marginTop="15dp"
+        android:text="Node Name:"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <!-- Node name ip -->
+
+    <TextView
+        android:id="@+id/textNodeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/NodeName"
+        android:layout_alignRight="@+id/textTitle"
+        android:layout_below="@+id/NodeName"
+        android:text="ellis.elec529.recg.rice.edu"
+        android:textSize="16dp" />
+
+    <!-- ======================= -->
+
+
+    <!-- Status -->
+
+    <TextView
+        android:id="@+id/Status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/NodeName"
+        android:layout_below="@+id/textNodeName"
+        android:layout_marginTop="15dp"
+        android:text="Status:"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <!-- Connected -->
+
+    <TextView
+        android:id="@+id/textStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BatPower"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/Status"
+        android:text="Connected"
+        android:textSize="14sp" />
+
+    <!-- ======================= -->
+    <!-- Battery power text -->
+
+    <TextView
+        android:id="@+id/BatPower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Status"
+        android:layout_below="@+id/Status"
+        android:layout_marginTop="20dp"
+        android:text="Battery Power:"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+    <!-- Battery % -->
+
+    <TextView
+        android:id="@+id/textBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BatPower"
+        android:layout_alignBottom="@+id/BatPower"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/BatPower"
+        android:text="95%"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000"
+        android:textSize="14sp" />
+
+    <!-- ======================= -->
+    <!-- Services -->
+
+    <TextView
+        android:id="@+id/Services"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/NodeName"
+        android:layout_centerVertical="true"
+        android:text="Services:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+    <!-- ======================= -->
+    <!-- Web text -->
+
+    <TextView
+        android:id="@+id/WebText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Services"
+        android:layout_below="@+id/Services"
+        android:layout_marginTop="18dp"
+        android:text="Web:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <!-- Web Started -->
+
+    <TextView
+        android:id="@+id/WebStarted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/WebText"
+        android:layout_alignBottom="@+id/WebText"
+        android:layout_toRightOf="@+id/Services"
+        android:text="Started"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#990000"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+    <!-- Web start button -->
+
+    <Button
+        android:id="@+id/WebStartButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/WebStarted"
+        android:layout_alignBottom="@+id/WebStarted"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/WebStarted"
+        android:background="@drawable/green_button"
+        android:minHeight="40dip"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="Start"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <!-- Web Stop button -->
+
+    <Button
+        android:id="@+id/WebStopButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/WebStartButton"
+        android:layout_alignBottom="@+id/WebStartButton"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/WebStartButton"
+        android:background="@drawable/red_button"
+        android:minHeight="40dip"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="Stop"
+        android:textColor="#000"
+        android:textSize="16sp" />
+    <!-- Web Cong button -->
+
+    <Button
+        android:id="@+id/WebConfButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/WebStopButton"
+        android:layout_alignBottom="@+id/WebStopButton"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/WebStopButton"
+        android:background="@drawable/yellow_button"
+        android:minHeight="40dip"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="Conf"
+        android:textColor="#000"
+        android:textSize="16sp" />
+    <!-- ======================= -->
+    <!-- Email text -->
+
+    <TextView
+        android:id="@+id/EmailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/WebText"
+        android:layout_below="@+id/WebStartButton"
+        android:layout_marginTop="28dp"
+        android:text="Email:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <!-- Email Started -->
+
+    <TextView
+        android:id="@+id/EmailStarted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/EmailText"
+        android:layout_alignBottom="@+id/EmailText"
+        android:layout_alignLeft="@+id/WebStarted"
+        android:text="Started"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#990000"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
+    <!-- Start Email button -->
+
+    <Button
+        android:id="@+id/EmailStartButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/EmailStarted"
+        android:layout_alignBottom="@+id/EmailStarted"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/EmailStarted"
+        android:background="@drawable/green_button"
+        android:minHeight="40dip"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="Start" />
+
+    <!-- Email Stop button -->
+
+    <Button
+        android:id="@+id/EmailStopButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/EmailStartButton"
+        android:layout_alignBottom="@+id/EmailStartButton"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/EmailStartButton"
+        android:background="@drawable/red_button"
+        android:minHeight="40dip"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="Stop"
+        android:textSize="16sp" />
+
+    <!-- Conf Email -->
+
+    <Button
+        android:id="@+id/EmailConfButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/EmailStopButton"
+        android:layout_alignBottom="@+id/EmailStopButton"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/EmailStopButton"
+        android:background="@drawable/yellow_button"
+        android:minHeight="40dip"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="Conf"
+        android:textSize="16sp" />
+    <!-- =========================================================================================== -->
+
+
+    <!-- FTP Text -->
+    <!--
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/EmailText"
+        android:layout_below="@+id/EmailStartButton"
+        android:layout_marginTop="20dp"
+        android:text="FTP:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF0000" />
+    -->
+    <!-- FTP Started -->
+    <!--
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_toRightOf="@+id/Services"
+        android:text="Started"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF0000" />
+    -->
+    <!-- FTP start button -->
+    <!--
+    <Button
+        android:id="@+id/Button02"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView02"
+        android:layout_alignBottom="@+id/TextView02"
+        android:layout_toLeftOf="@+id/WebStopButton"
+        android:text="Start"
+        android:textColor="#FF0000" />
+    -->
+    <!-- FTP STop button -->
+    <!--
+    <Button
+        android:id="@+id/Button05"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Button02"
+        android:layout_alignBottom="@+id/Button02"
+        android:layout_toLeftOf="@+id/WebConfButton"
+        android:text="Stop"
+        android:textColor="#FF0000" />
+    -->
+    <!-- Conf FTP -->
+    <!--
+    <Button
+        android:id="@+id/Button08"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Button05"
+        android:layout_alignBottom="@+id/Button05"
+        android:layout_alignLeft="@+id/EmailConfButton"
+        android:text="Conf"
+        android:textColor="#FF0000" />
+    -->
+    <!-- ======================== -->
+
+
+    <!-- CHat Text -->
+    <!--
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView03"
+        android:layout_alignBottom="@+id/TextView03"
+        android:layout_alignLeft="@+id/textView7"
+        android:text="Chat:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF0000" />
+    -->
+    <!-- Chat started -->
+    <!--
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Button02"
+        android:layout_marginTop="21dp"
+        android:layout_toRightOf="@+id/Services"
+        android:text="Started"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF0000" />
+    -->
+    <!-- Chat start button -->
+    <!--
+    <Button
+        android:id="@+id/Button03"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView03"
+        android:layout_alignBottom="@+id/TextView03"
+        android:layout_toLeftOf="@+id/WebStopButton"
+        android:text="Start"
+        android:textColor="#FF0000" />
+    -->
+    <!-- Chat stop button -->
+    <!--
+    <Button
+        android:id="@+id/Button06"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Button03"
+        android:layout_alignBottom="@+id/Button03"
+        android:layout_toLeftOf="@+id/WebConfButton"
+        android:text="Stop"
+        android:textColor="#FF0000" />
+    -->
+    <!-- Conf Chat -->
+    <!--
+    <Button
+        android:id="@+id/Button09"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Button06"
+        android:layout_alignBottom="@+id/Button06"
+        android:layout_alignLeft="@+id/Button08"
+        android:text="Conf"
+        android:textColor="#FF0000" />
+    -->
+    <!-- ================================ -->
+
+</RelativeLayout>

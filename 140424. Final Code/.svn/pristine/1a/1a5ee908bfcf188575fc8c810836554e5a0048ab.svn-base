@@ -1,0 +1,38 @@
+##################### Recipient Policy #####################
+# This file is used by the recipient policy mechanism
+# to identify whether a recipient should be accepted/
+# reject during a mail session. The policy is enforced when
+# a message from a user of a locally administered domain is
+# being received by the server. Both a global acceptance/
+# rejection list and a per jes-domain list are offered.
+# Per jes-domain entries supersede the global ones. That
+# is, any domain listed in the jes-domain list will always
+# take precedence over the opposite global entry during a
+# session with a sender from the said domain. E.g. for a
+# jes-domain named mydomain.com with entries in this file:
+# allow=domainABC.com, block.mydomain.com=domainABC.com
+# JES will always reject recipients at domainABC.com from
+# any sender at the mydomain.com jes-domain and allow its
+# use by all other jes-domains. If both block and allow
+# entries exist, the block entries take precedence and the
+# allow list is ignored. This applies to both global and
+# per jes-domain entries. A valid explicit allow(block) entry
+# instantly places an implicit  block(allow) setting for all
+# other domains. E.g. for a policy
+# allow.mydomain.com=domainABC.com JES will block all traffic
+# from domain mydomain.com except messages intended for
+# recipients at domainABC.com. A global block on domainABC.com
+# will be ignored as well as any global allow entry (for the
+# jes-domain in this example).
+# Take note that in the case of a jes-domain entry the jes-domain
+# itself is treated like any other recipient domain. Therefore
+# if it is not defined in the list of allowed(blocked) domains
+# any recipient belonging to the said jes-domain will be blocked
+# (allowed).
+# The entries in this file have the following format:
+# allow=
+# block=
+# for global entries and
+# allow.mydomain.com=
+# block.mydomain.com=
+# for a jes-domain called mydomain.com.

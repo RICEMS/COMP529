@@ -1,0 +1,9 @@
+# Secrets for authentication using CHAP
+# client	server	secret			IP addresses
+clay l2tpd MCluster 192.168.29.105
+ellis l2tpd MCluster 192.168.29.106
+erg l2tpd MCluster 192.168.29.111
+adriana l2tpd MCluster 192.168.29.107
+yanda l2tpd MCluster 192.168.29.108
+haihua l2tpd MCluster 192.168.29.109
+azalia l2tpd MCluster 192.168.29.110

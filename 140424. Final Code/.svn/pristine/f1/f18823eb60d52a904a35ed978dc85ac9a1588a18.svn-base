@@ -1,0 +1,7 @@
+# Secrets for authenticating l2tp tunnels
+# us	them	secret
+# *		marko blah2
+# zeus		marko	blah
+# *	*	interop
+
+clay xl2tp MCluster

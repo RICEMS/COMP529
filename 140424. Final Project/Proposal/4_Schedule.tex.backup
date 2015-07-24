@@ -1,0 +1,33 @@
+\section{Expected Outcomes and Schedule}
+
+\subsection{Expected Outcomes}
+In our project we plan on
+
+we plan on developing an app that will address or automate tough problems in decentralizing the internet....  
+Framework, we plan on developing a framework to address the problems with changing ip addresses.....
+
+The expected outcomes of our project can be divided into four stages. In stage 1, we plan to identify, install and deploy our framework with off-the-shelf technology (VPN server with public IPs and DNS) to meet our basic needs. 
+Next, in stage two we plan to extend our framework beyond off-the-shelf technologies in order to ensure the framework is capable of executing all our needs in terms of analysis and system features.
+Third, we will integrate use cases to our framework, meaning we will deploy applications that will allow us to test our system. Example applications we consider in deploying are wordpress or open source source social media.
+Fourth, 
+
+1.     Identify, install and execute an existing framework that closely meets our needs.
+
+2.     Extend or build upon the framework as necessary.
+
+3.     Execute example applications on the framework
+
+4.     Test and analyze performance of the system in terms of power, failover, etc.
+
+\subsection{Schedule}
+\begin{itemize}
+ \item 2/28 - Framework Setup: Get connectivity and reachability on phones (VPN server with public IPs and DNS)
+ \item 3/7 - Framework Setup: Servers installation (Web and Email)
+ \item 3/11 - Midterm Presentation: We will have basic experimental framework installed so we can start working on novel issues (replication, failover, and power).
+ \item 3/21 - Data Replictaion: Basic replication scheme working
+ \item 4/4 - Failover: Basic failover mechanism developed and implemented
+ \item 4/11 - Power: Experiment with performance and power
+ \item 4/22- Final Report: Integrate results into the final report
+ \item 4/22 - Final Presentation: Polish and integration into ``app`` 
+\end{itemize}
+
